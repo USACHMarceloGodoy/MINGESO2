@@ -3,7 +3,7 @@ spring:
     restart:
       aditional-paths: src/main/java
   application:
-    name: estudiante
+    name: estudiantes
   cloud:
     config:
       enabled: true
