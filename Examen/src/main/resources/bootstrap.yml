@@ -3,14 +3,14 @@ spring:
     restart:
       aditional-paths: src/main/java
   application:
-    name: estudiante
+    name: Examen
   cloud:
     config:
       enabled: true
       uri: http://localhost:8081
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5433/estudiantedb
+    url: jdbc:postgresql://localhost:5433/examendb
     username: postgres
     password: 1234
   jpa:

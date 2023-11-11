@@ -1,6 +1,20 @@
 spring:
+  devtools:
+    restart:
+      aditional-paths: src/main/java
   application:
     name: Cuota
   cloud:
     config:
-      uri: http://config-service:8888
+      enabled: true
+      uri: http://localhost:8081
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/cuotasdb
+    username: postgres
+    password: 1234
+  jpa:
+    show-sql: true
+    hibernate:
+      dialect: postgresql
+      ddl-auto: create
