@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tingeso</groupId>
-	<artifactId>empleado-service</artifactId>
+	<artifactId>Cuota</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>empleado-service</name>
+	<name>Cuota</name>
 	<description>Empleado</description>
 	<properties>
 		<java.version>11</java.version>
