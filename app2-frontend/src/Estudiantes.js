@@ -10,7 +10,7 @@ function Estudiantes() {
     const fetchData = async () => {
       try {
         const response = await api.get('/api/estudiantes');
-        setProveedores(response.data);
+        setEstudiantes(response.data); // Cambiado de setProveedores a setEstudiantes
       } catch (error) {
         setMensaje('No se pudieron cargar los estudiantes.');
       }
@@ -34,14 +34,14 @@ function Estudiantes() {
           </tr>
         </thead>
         <tbody>
-          {proveedores.map((estudiantes) => (
-            <tr key={estudiantes.rut}>
-              <td>{estudiantes.rut}</td>
-              <td>{estudiantes.nombres}</td>
-              <td>{estudiantes.apellidos}</td>
-              <td>{estudiantes.anoegreso}</td>
-              <td>{estudiantes.nombre_colegio}</td>
-              <td>{estudiantes.tipo_colegio}</td>
+          {estudiantes.map((estudiante) => ( // Cambiado de proveedores a estudiantes
+            <tr key={estudiante.rut}>
+              <td>{estudiante.rut}</td>
+              <td>{estudiante.nombres}</td>
+              <td>{estudiante.apellidos}</td>
+              <td>{estudiante.anoegreso}</td>
+              <td>{estudiante.nombre_colegio}</td>
+              <td>{estudiante.tipo_colegio}</td>
             </tr>
           ))}
         </tbody>

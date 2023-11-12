@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from './api';
 
 function AgregarEstudiante() {
-    const [proveedor, setEstudiante] = useState({
+    const [estudiante, setEstudiante] = useState({
         rut: '',
         nombre: '',
         apellidos: '',
@@ -34,7 +34,7 @@ function AgregarEstudiante() {
                 setMensaje('Estudiante agregado correctamente.');
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
                 setMensaje('Error: No se pudo agregar este Estudiante.');
             });
     };
@@ -76,14 +76,15 @@ function AgregarEstudiante() {
                             <label htmlFor="tipo_colegio">Tipo Colegio</label>
                             <select className="form-control" id="tipo_colegio" name="tipo_colegio" value={estudiante.tipo_colegio} onChange={handleChange}>
                                 <option value="Municipal">Municipal</option>
+                                <option value="Subvencionado">Subvencionado</option>
                                 <option value="Particular">Particular</option>
-                                <option value="Particular Subvencionado">Particular Subvencionado</option>
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="fecha_nacimiento">Fecha Nacimiento</label>
                             <input type="date" className="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value={estudiante.fecha_nacimiento} onChange={handleChange} />
                         </div>
+                        <button type="submit" className="btn btn-primary">Agregar Estudiante</button>
                     </form>
                 </div>
             </div>
