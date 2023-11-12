@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cuotas")
+@RequestMapping("/api/cuotas")
 public class CuotasController {
     @Autowired
     private CuotaServices cuotaServices;

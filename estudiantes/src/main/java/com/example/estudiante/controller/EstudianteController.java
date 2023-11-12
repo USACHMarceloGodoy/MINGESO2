@@ -4,12 +4,11 @@ import com.example.estudiante.entity.Estudiante;
 import com.example.estudiante.service.EstudianteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/estudiantes")
+@RequestMapping("/api/estudiantes")
 public class EstudianteController {
 
     @Autowired
