@@ -1,4 +1,5 @@
 package com.example.Examen.controller;
+import com.example.Examen.models.Plantilla;
 import com.example.Examen.services.NotaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @RestController
-@RequestMapping("/notas")
+@RequestMapping("/api/notas")
 public class NotaController {
     @Autowired
     private NotaServices notaServices;
@@ -33,5 +34,11 @@ public class NotaController {
             e.printStackTrace();  // Log the exception
             return new ResponseEntity<>("Error al importar las notas desde el archivo CSV.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    //generar plantilla
+    @PostMapping("/generar-plantilla")
+    public ResponseEntity<Plantilla> generarPlantilla(@RequestParam("rut") String rut) {
+        Plantilla plantilla = notaServices.generarPlantilla(rut);
+        return new ResponseEntity<Plantilla>(plantilla, HttpStatus.OK);
     }
 }

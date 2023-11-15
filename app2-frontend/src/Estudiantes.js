@@ -9,8 +9,8 @@ function Estudiantes() {
     document.title = "PreU | Estudiantes";
     const fetchData = async () => {
       try {
-        const response = await api.get('/api/estudiantes');
-        setEstudiantes(response.data); // Cambiado de setProveedores a setEstudiantes
+        const response = await api.get('/api/estudiantes/listar');
+        setEstudiantes(response.data);
       } catch (error) {
         setMensaje('No se pudieron cargar los estudiantes.');
       }
@@ -40,8 +40,8 @@ function Estudiantes() {
               <td>{estudiante.nombres}</td>
               <td>{estudiante.apellidos}</td>
               <td>{estudiante.anoegreso}</td>
-              <td>{estudiante.nombre_colegio}</td>
-              <td>{estudiante.tipo_colegio}</td>
+              <td>{estudiante.nombreColegio}</td>
+              <td>{estudiante.tipoColegio}</td>
             </tr>
           ))}
         </tbody>

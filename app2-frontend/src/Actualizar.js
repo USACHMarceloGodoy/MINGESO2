@@ -3,12 +3,8 @@ import React from 'react';
 class ActualizarCuotas extends React.Component {
   actualizarCuotas = () => {
     // Hacer una llamada fetch() a la API del controlador para actualizar las cuotas
-    fetch('/api/actualizar-cuotas', {
-      method: 'POST',
-      body: JSON.stringify({
-        userId: 123, // Reemplazar con el ID del usuario que se está actualizando
-        numCuotas: 6 // Reemplazar con el número de cuotas que se están actualizando
-      }),
+    fetch('/api/cuotas/aplicarIntereses', {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }

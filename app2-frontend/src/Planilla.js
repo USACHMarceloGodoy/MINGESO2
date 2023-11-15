@@ -1,52 +1,51 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import api from './api';
 
-import React, { useState } from "react";
-import axios from "axios";
+function GenerarPlantilla() {
+  const [rut, setRut] = useState('');
+  const [plantilla, setPlantilla] = useState(null);
+  const [mensaje, setMensaje] = useState('');
 
-const Planilla = () => {
-  const [rut, setRut] = useState("");
-  const [estudiante, setEstudiante] = useState({});
-  const [error, setError] = useState("");
-
-  const buscarEstudiante = async () => {
+  const handleGenerarPlantilla = async () => {
     try {
-      const response = await axios.get(`/api/estudiantes/${rut}`);
-      setEstudiante(response.data);
-      setError("");
+      const response = await api.post(`/api/notas/generar-plantilla?rut=${rut}`);
+      setPlantilla(response.data);  // Fix the state setter to match the response data
     } catch (error) {
-      setError("No se encontró un estudiante con ese RUT");
-      setEstudiante({});
+      setMensaje('No se pudieron cargar la plantilla.');
     }
   };
 
   return (
     <div>
-      <h1>Planilla de Pagos</h1>
+      <h1>Generar Plantilla</h1>
+      <label htmlFor="rut">Ingrese el RUT:</label>
       <input
         type="text"
-        placeholder="Ingrese RUT del estudiante"
+        id="rut"
         value={rut}
         onChange={(e) => setRut(e.target.value)}
       />
-      <button onClick={buscarEstudiante}>Buscar</button>
-      {error && <p>{error}</p>}
-      {estudiante.rut && (
+      <button onClick={handleGenerarPlantilla}>Generar Plantilla</button>
+      {mensaje && <p>{mensaje}</p>}
+      {plantilla && (
         <div>
-          <h2>{estudiante.nombre}</h2>
-          <p>RUT: {estudiante.rut}</p>
-          <p>Nro. exámenes rendidos: {estudiante.numExamenes}</p>
-          <p>Promedio puntaje exámenes: {estudiante.promedioPuntajes}</p>
-          <p>Monto total arancel a pagar: {estudiante.montoTotal}</p>
-          <p>Tipo Pago: {estudiante.tipoPago}</p>
-          <p>Nro. total de cuotas pactadas: {estudiante.numCuotas}</p>
-          <p>Nro. cuotas pagadas: {estudiante.numCuotasPagadas}</p>
-          <p>Monto total pagado: {estudiante.montoTotalPagado}</p>
-          <p>Fecha último pago: {estudiante.fechaUltimoPago}</p>
-          <p>Saldo por pagar: {estudiante.saldoPorPagar}</p>
-          <p>Nro. Cuotas con retraso: {estudiante.numCuotasRetraso}</p>
+          <h2>Información de la Plantilla</h2>
+          <p>RUT: {plantilla.rut}</p>
+          <p>Nombre: {plantilla.nombre}</p>
+          <p>Examenes Rendidos: {plantilla.examenes_rendidos}</p>
+          <p>Promedio: {plantilla.promedio}</p>
+          <p>Arancel: {plantilla.arancel}</p>
+          <p>Tipo de Pago: {plantilla.tipo_pago}</p>
+          <p>Número de Cuotas: {plantilla.numero_cuotas}</p>
+          <p>Cuotas Pagadas: {plantilla.cuotas_pagadas}</p>
+          <p>Monto Pagado: {plantilla.monto_pagado}</p>
+          <p>Último Pago: {plantilla.ultimo_pago}</p>
+          <p>Saldo Restante: {plantilla.saldo_restante}</p>
         </div>
       )}
     </div>
   );
-};
+}
 
-export default Planilla;
+export default GenerarPlantilla;

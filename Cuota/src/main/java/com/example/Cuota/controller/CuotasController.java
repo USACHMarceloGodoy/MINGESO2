@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cuotas")
+@RequestMapping("/api/cuotas")
 public class CuotasController {
     @Autowired
     private CuotaServices cuotaServices;
@@ -42,11 +42,14 @@ public class CuotasController {
             @RequestParam String rut,
             @RequestParam int cuotas) {
         try {
+            System.out.println("rut: " + rut);
+            System.out.println("cuotas: " + cuotas);
             List<Cuota> cuotasGeneradas = cuotaServices.generarCuotas(rut, cuotas);
             return ResponseEntity.ok(cuotasGeneradas);
         } catch (Exception e) {
-            // Manejo de excepciones
+            e.printStackTrace();
             return ResponseEntity.status(500).build(); // Código 500 para errores internos del servidor
         }
     }
 }
+

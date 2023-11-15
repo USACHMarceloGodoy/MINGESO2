@@ -17,7 +17,7 @@ public interface CuotaRepository extends CrudRepository<Cuota, Long> {
 
     @Modifying
     @Query("UPDATE Cuota c SET c.pagado = CASE WHEN c.pagado = TRUE THEN FALSE ELSE TRUE END WHERE c.id = :idCuota")
-    void actualizarEstadoDePago(@Param("idCuota") long idCuota);
+    void actualizarEstadoDePago(@Param("idCuota") int idCuota);
 
     @Query("SELECT c.monto FROM Cuota c WHERE c.rutEstudiante = :rut")
     Integer obtenerPrecioCuota(@Param("rut") String rut);

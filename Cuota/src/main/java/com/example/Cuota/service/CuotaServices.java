@@ -22,7 +22,7 @@ public class CuotaServices {
     RestTemplate restTemplate;
 
     public Estudiante obtenerEstudiante(String rut) {
-        String url = "http://localhost:8081/estudiantes/buscar/" + rut;
+        String url = "http://localhost:8888/api/estudiantes/buscar/" + rut;
         Estudiante estudiante = restTemplate.getForObject(url, Estudiante.class);
         return estudiante;
     }
@@ -161,4 +161,5 @@ public class CuotaServices {
         calendar.add(Calendar.MONTH, numeroCuota);
         return calendar.getTime();
     }
+
 }

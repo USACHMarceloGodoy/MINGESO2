@@ -28,7 +28,7 @@ function AgregarEstudiante() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        api.post('/api/estudiantes', estudiante)
+        api.post('/api/estudiantes/agregar', estudiante)
             .then(response => {
                 console.log(response);
                 setMensaje('Estudiante agregado correctamente.');
@@ -57,32 +57,32 @@ function AgregarEstudiante() {
                             <input type="text" className="form-control" id="rut" name="rut" value={estudiante.rut} onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="nombre">Nombres</label>
-                            <input type="text" className="form-control" id="nombre" name="nombre" value={estudiante.nombre} onChange={handleChange} />
+                            <label htmlFor="nombreS">Nombres</label>
+                            <input type="text" className="form-control" id="nombres" name="nombres" value={estudiante.nombres} onChange={handleChange} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="apellidos">Apellidos</label>
                             <input type="text" className="form-control" id="apellidos" name="apellidos" value={estudiante.apellidos} onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="añoegreso">Año Egreso</label>
-                            <input type="text" className="form-control" id="añoegreso" name="añoegreso" value={estudiante.añoegreso} onChange={handleChange} />
+                            <label htmlFor="anoegreso">Año Egreso</label>
+                            <input type="text" className="form-control" id="anoegreso" name="anoegreso" value={estudiante.anoegreso} onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="nombre_colegio">Nombre Colegio</label>
-                            <input type="text" className="form-control" id="nombre_colegio" name="nombre_colegio" value={estudiante.nombre_colegio} onChange={handleChange} />
+                            <label htmlFor="nombreColegio">Nombre Colegio</label>
+                            <input type="text" className="form-control" id="nombreColegio" name="nombreColegio" value={estudiante.nombreColegio} onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="tipo_colegio">Tipo Colegio</label>
-                            <select className="form-control" id="tipo_colegio" name="tipo_colegio" value={estudiante.tipo_colegio} onChange={handleChange}>
+                            <label htmlFor="tipoColegio">Tipo Colegio</label>
+                            <select className="form-control" id="tipoColegio" name="tipoColegio" value={estudiante.tipoColegio} onChange={handleChange}>
                                 <option value="Municipal">Municipal</option>
                                 <option value="Subvencionado">Subvencionado</option>
                                 <option value="Particular">Particular</option>
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="fecha_nacimiento">Fecha Nacimiento</label>
-                            <input type="date" className="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value={estudiante.fecha_nacimiento} onChange={handleChange} />
+                            <label htmlFor="fechaNacimiento">Fecha Nacimiento</label>
+                            <input type="date" className="form-control" id="fechaNacimiento" name="fechaNacimiento" value={estudiante.fechaNacimiento} onChange={handleChange} />
                         </div>
                         <button type="submit" className="btn btn-primary">Agregar Estudiante</button>
                     </form>
